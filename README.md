@@ -1207,4 +1207,5 @@ Final DR Classification
 
 **Frontend:** HTML, CSS, JavaScript
 
-**Status:** Current-semester retinal-image pipeline completed
+**Status:** Current-semester retinal-image pipeline completed#   M a j o r _ P r o j e c t 2 0 2 6  
+ 
