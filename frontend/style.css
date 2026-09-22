@@ -1,0 +1,936 @@
+/* ============================================================
+   RETINACARE - MEDICAL UI
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --bg: #f4f8fb;
+    --surface: #ffffff;
+    --surface-soft: #f8fbfd;
+    --text: #17212b;
+    --muted: #687784;
+    --border: #dfe8ee;
+    --primary: #167d8d;
+    --primary-dark: #106672;
+    --primary-light: #e5f4f6;
+    --success: #24855a;
+    --danger: #c95353;
+    --shadow: 0 14px 40px rgba(30, 70, 90, 0.08);
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.header {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 22px 6vw;
+
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: var(--primary-light);
+    color: var(--primary);
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+
+.brand h1 {
+    font-size: 19px;
+    line-height: 1.1;
+}
+
+
+.brand p {
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--success);
+}
+
+
+/* ============================================================
+   MAIN CONTAINER
+   ============================================================ */
+
+.container {
+    width: min(1180px, 90%);
+
+    margin: 0 auto;
+
+    padding: 58px 0 70px;
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+    margin-bottom: 40px;
+}
+
+
+.eyebrow {
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    color: var(--primary);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+.hero h2 {
+    max-width: 760px;
+
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.08;
+
+    letter-spacing: -1.8px;
+}
+
+
+.hero h2 span {
+    color: var(--primary);
+}
+
+
+.hero p {
+    max-width: 650px;
+
+    margin-top: 18px;
+
+    color: var(--muted);
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   WORKSPACE
+   ============================================================ */
+
+.workspace {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+}
+
+
+.card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
+    box-shadow: var(--shadow);
+
+    padding: 28px;
+}
+
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+.card-header h3 {
+    margin-top: 6px;
+
+    font-size: 18px;
+}
+
+
+.section-number {
+    color: var(--primary);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.format-badge,
+.result-status {
+    padding: 7px 10px;
+
+    border-radius: 8px;
+
+    background: var(--surface-soft);
+
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   DROP ZONE
+   ============================================================ */
+
+.drop-zone {
+    min-height: 310px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    border: 1.5px dashed #b8cbd5;
+    border-radius: 18px;
+
+    background: var(--surface-soft);
+
+    text-align: center;
+
+    transition: 0.2s ease;
+}
+
+
+.drop-zone.drag-over {
+    border-color: var(--primary);
+
+    background: var(--primary-light);
+}
+
+
+.upload-icon {
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 16px;
+
+    background: var(--primary-light);
+    color: var(--primary);
+
+    font-size: 28px;
+    font-weight: 600;
+}
+
+
+.drop-zone h4 {
+    font-size: 16px;
+}
+
+
+.drop-zone p {
+    max-width: 310px;
+
+    margin: 8px 0 20px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.secondary-btn,
+.analyze-btn,
+.remove-btn {
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.secondary-btn {
+    padding: 11px 18px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: var(--surface);
+    color: var(--text);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.secondary-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+
+.analyze-btn {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 18px;
+
+    padding: 14px 20px;
+
+    border: none;
+    border-radius: 11px;
+
+    background: var(--primary);
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.analyze-btn:hover:not(:disabled) {
+    background: var(--primary-dark);
+}
+
+
+.analyze-btn:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.45;
+}
+
+
+/* ============================================================
+   IMAGE PREVIEW
+   ============================================================ */
+
+.preview-container {
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    background: var(--surface-soft);
+}
+
+
+.preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+}
+
+
+.preview-label {
+    color: var(--muted);
+
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+.preview-header h4 {
+    margin-top: 3px;
+
+    font-size: 13px;
+
+    word-break: break-all;
+}
+
+
+.remove-btn {
+    padding: 7px 10px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: var(--surface);
+
+    color: var(--danger);
+
+    font-size: 11px;
+}
+
+
+.preview-container img {
+    width: 100%;
+    height: 245px;
+
+    display: block;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    background: #eef3f6;
+}
+
+
+/* ============================================================
+   RESULT
+   ============================================================ */
+
+.empty-result {
+    min-height: 390px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.result-icon {
+    width: 65px;
+    height: 65px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 50%;
+
+    background: var(--primary-light);
+    color: var(--primary);
+
+    font-size: 27px;
+}
+
+
+.empty-result h4 {
+    font-size: 16px;
+}
+
+
+.empty-result p {
+    max-width: 320px;
+
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   ACTUAL RESULT
+   ============================================================ */
+
+.prediction-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    background: var(--primary-light);
+}
+
+
+.result-label {
+    color: var(--muted);
+
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+.prediction-box h2 {
+    margin-top: 7px;
+
+    color: var(--primary-dark);
+
+    font-size: 26px;
+}
+
+
+.stage-number {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+
+    background: var(--surface);
+
+    color: var(--primary);
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   CONFIDENCE
+   ============================================================ */
+
+.confidence-section {
+    margin-top: 25px;
+}
+
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 9px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+.metric-row strong {
+    color: var(--text);
+}
+
+
+.progress-track {
+    height: 8px;
+
+    overflow: hidden;
+
+    border-radius: 99px;
+
+    background: #e7eef2;
+}
+
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: var(--primary);
+
+    transition: width 0.5s ease;
+}
+
+
+/* ============================================================
+   PROBABILITIES
+   ============================================================ */
+
+.probability-section {
+    margin-top: 27px;
+}
+
+
+.metric-title {
+    margin-bottom: 13px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.probability-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 11px;
+}
+
+
+.probability-row {
+    display: grid;
+
+    grid-template-columns: 125px 1fr 48px;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 11px;
+}
+
+
+.probability-name {
+    color: var(--muted);
+}
+
+
+.probability-track {
+    height: 6px;
+
+    overflow: hidden;
+
+    border-radius: 99px;
+
+    background: #e7eef2;
+}
+
+
+.probability-fill {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: var(--primary);
+
+    transition: width 0.5s ease;
+}
+
+
+.probability-value {
+    text-align: right;
+
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   DISCLAIMER
+   ============================================================ */
+
+.disclaimer {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 25px;
+    padding: 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    background: var(--surface-soft);
+}
+
+
+.disclaimer span {
+    color: var(--primary);
+
+    font-size: 15px;
+}
+
+
+.disclaimer p {
+    color: var(--muted);
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   ERROR
+   ============================================================ */
+
+.error-result {
+    min-height: 390px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.error-icon {
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 15px;
+
+    border-radius: 50%;
+
+    background: #fceaea;
+    color: var(--danger);
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+
+.error-result h4 {
+    font-size: 16px;
+}
+
+
+.error-result p {
+    max-width: 320px;
+
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   INFO CARDS
+   ============================================================ */
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-top: 22px;
+}
+
+
+.info-card {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 13px;
+
+    padding: 20px;
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    background: var(--surface);
+}
+
+
+.info-icon {
+    min-width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 11px;
+
+    background: var(--primary-light);
+    color: var(--primary);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.info-card h4 {
+    font-size: 13px;
+}
+
+
+.info-card p {
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 22px 6vw;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+
+.hidden {
+    display: none !important;
+}
+
+
+.spinner {
+    width: 16px;
+    height: 16px;
+
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: white;
+
+    border-radius: 50%;
+
+    animation: spin 0.7s linear infinite;
+}
+
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+    .workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 18px 5%;
+    }
+
+    .status {
+        display: none;
+    }
+
+    .container {
+        width: 92%;
+
+        padding-top: 38px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .hero h2 {
+        font-size: 35px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 7px;
+
+        text-align: center;
+    }
+
+}

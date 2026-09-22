@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>RetinaCare | Diabetic Retinopathy Detection</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+
+            <div>
+                <h1>RetinaCare</h1>
+                <p>Diabetic Retinopathy Screening</p>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            AI Model Ready
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <!-- Hero -->
+
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <span class="eyebrow">
+                    AI-ASSISTED RETINAL SCREENING
+                </span>
+
+                <h2>
+                    Diabetic Retinopathy
+                    <span>Classification</span>
+                </h2>
+
+                <p>
+                    Upload a retinal fundus image to analyze
+                    diabetic retinopathy severity using a
+                    DenseNet121 deep learning model.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= WORKSPACE ================= -->
+
+        <section class="workspace">
+
+            <!-- Upload Card -->
+
+            <div class="card upload-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="section-number">01</span>
+                        <h3>Upload Retinal Image</h3>
+                    </div>
+
+                    <span class="format-badge">
+                        JPG · JPEG · PNG
+                    </span>
+
+                </div>
+
+
+                <!-- Drop Zone -->
+
+                <div
+                    class="drop-zone"
+                    id="dropZone"
+                >
+
+                    <div
+                        class="upload-icon"
+                        id="uploadIcon"
+                    >
+                        ↑
+                    </div>
+
+                    <h4 id="uploadTitle">
+                        Upload retinal fundus image
+                    </h4>
+
+                    <p id="uploadDescription">
+                        Drag & drop your image here or
+                        choose a file from your computer.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        id="chooseBtn"
+                    >
+                        Choose Image
+                    </button>
+
+                    <input
+                        type="file"
+                        id="imageInput"
+                        accept=".jpg,.jpeg,.png"
+                        hidden
+                    >
+
+                </div>
+
+
+                <!-- Image Preview -->
+
+                <div
+                    class="preview-container hidden"
+                    id="previewContainer"
+                >
+
+                    <div class="preview-header">
+
+                        <div>
+                            <span class="preview-label">
+                                Selected Image
+                            </span>
+
+                            <h4 id="fileName">
+                                image.jpg
+                            </h4>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="remove-btn"
+                            id="removeBtn"
+                        >
+                            Remove
+                        </button>
+
+                    </div>
+
+                    <img
+                        id="imagePreview"
+                        src=""
+                        alt="Retinal image preview"
+                    >
+
+                </div>
+
+
+                <!-- Analyze Button -->
+
+                <button
+                    type="button"
+                    class="analyze-btn"
+                    id="analyzeBtn"
+                    disabled
+                >
+                    <span id="analyzeText">
+                        Analyze Retina
+                    </span>
+
+                    <span
+                        class="spinner hidden"
+                        id="spinner"
+                    ></span>
+                </button>
+
+            </div>
+
+
+            <!-- Result Card -->
+
+            <div class="card result-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="section-number">02</span>
+                        <h3>Screening Result</h3>
+                    </div>
+
+                    <span
+                        class="result-status"
+                        id="resultStatus"
+                    >
+                        Awaiting Image
+                    </span>
+
+                </div>
+
+
+                <!-- Empty Result -->
+
+                <div
+                    class="empty-result"
+                    id="emptyResult"
+                >
+
+                    <div class="result-icon">
+                        ◉
+                    </div>
+
+                    <h4>
+                        Your result will appear here
+                    </h4>
+
+                    <p>
+                        Upload a retinal image and click
+                        <strong>Analyze Retina</strong>
+                        to receive the model prediction.
+                    </p>
+
+                </div>
+
+
+                <!-- Actual Result -->
+
+                <div
+                    class="actual-result hidden"
+                    id="actualResult"
+                >
+
+                    <div class="prediction-box">
+
+                        <div>
+                            <span class="result-label">
+                                Predicted Stage
+                            </span>
+
+                            <h2 id="predictedStage">
+                                No DR
+                            </h2>
+                        </div>
+
+                        <div class="stage-number">
+                            <span id="predictedClass">
+                                0
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Confidence -->
+
+                    <div class="confidence-section">
+
+                        <div class="metric-row">
+
+                            <span>
+                                Model Confidence
+                            </span>
+
+                            <strong id="confidenceValue">
+                                0%
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-fill"
+                                id="confidenceBar"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Probability Distribution -->
+
+                    <div class="probability-section">
+
+                        <div class="metric-title">
+                            Class Probability Distribution
+                        </div>
+
+                        <div
+                            class="probability-list"
+                            id="probabilityList"
+                        ></div>
+
+                    </div>
+
+
+                    <!-- Disclaimer -->
+
+                    <div class="disclaimer">
+
+                        <span>ⓘ</span>
+
+                        <p>
+                            This AI result is intended for
+                            academic and research purposes only
+                            and should not be considered a
+                            medical diagnosis.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Error -->
+
+                <div
+                    class="error-result hidden"
+                    id="errorResult"
+                >
+
+                    <div class="error-icon">
+                        !
+                    </div>
+
+                    <h4>
+                        Prediction failed
+                    </h4>
+
+                    <p id="errorMessage">
+                        Something went wrong.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MODEL INFO ================= -->
+
+        <section class="info-grid">
+
+            <div class="info-card">
+
+                <span class="info-icon">AI</span>
+
+                <div>
+                    <h4>DenseNet121</h4>
+                    <p>
+                        Image classification model
+                        using transfer learning.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span class="info-icon">5</span>
+
+                <div>
+                    <h4>Five DR Classes</h4>
+                    <p>
+                        No DR, Mild, Moderate,
+                        Severe and Proliferative.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span class="info-icon">224</span>
+
+                <div>
+                    <h4>Image Processing</h4>
+                    <p>
+                        Input images are resized to
+                        224 × 224 pixels.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <p>
+            Academic Project · AI-Assisted Retinal Image
+            Classification
+        </p>
+
+        <p>
+            DenseNet121 · FastAPI
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+PHASE 5 - DENSENET121 TEST EVALUATION
+======================================================================
+
+Model: DenseNet121
+Dataset: ODIR-5K
+Checkpoint: models/best_densenet121.pth
+Test CSV: data/test.csv
+Test samples: 711
+Device: cpu
+
+Overall Metrics
+----------------------------------------------------------------------
+Accuracy: 0.5176 (51.76%)
+Weighted Precision: 0.6577 (65.77%)
+Weighted Recall: 0.5176 (51.76%)
+Weighted F1-score: 0.5637 (56.37%)
+Macro F1-score: 0.3262 (32.62%)
+
+Class Names
+----------------------------------------------------------------------
+0 = No DR
+1 = Mild DR
+2 = Moderate DR
+3 = Severe DR
+4 = Proliferative DR
+
+Classification Report
+----------------------------------------------------------------------
+                  precision    recall  f1-score   support
+
+           No DR     0.8580    0.5840    0.6950       476
+         Mild DR     0.1658    0.3780    0.2305        82
+     Moderate DR     0.3133    0.3760    0.3418       125
+       Severe DR     0.2791    0.5217    0.3636        23
+Proliferative DR     0.0000    0.0000    0.0000         5
+
+        accuracy                         0.5176       711
+       macro avg     0.3232    0.3720    0.3262       711
+    weighted avg     0.6577    0.5176    0.5637       711
+
+Confusion Matrix
+----------------------------------------------------------------------
+[[278 123  71   3   1]
+ [ 24  31  22   5   0]
+ [ 21  33  47  19   5]
+ [  1   0   9  12   1]
+ [  0   0   1   4   0]]
