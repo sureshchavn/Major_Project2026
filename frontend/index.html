@@ -2,425 +2,682 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>RetinaCare | Diabetic Retinopathy Detection</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetinaCare | AI-Assisted Diabetic Retinopathy Classification</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- ================= HEADER ================= -->
-
+    <!-- ================= NAVBAR ================= -->
     <header class="header">
+        <div class="header-inner">
+            <a href="#hero" class="brand">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M2.05 12a10 10 0 0 1 19.9 0 10 10 0 0 1-19.9 0z"></path>
+                        <circle cx="12" cy="12" r="8" stroke-dasharray="2 3" opacity="0.5"></circle>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <div class="brand-title">
+                        <span>Retina</span>Care
+                        <span class="brand-badge">AI Retina Analysis</span>
+                    </div>
+                    <p class="brand-sub">Diabetic Retinopathy Screening System</p>
+                </div>
+            </a>
 
-        <div class="brand">
-            <div class="brand-icon">✦</div>
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#workspace" class="nav-link">Analysis</a>
+                <a href="#dr-stages" class="nav-link">Clinical Stages</a>
+                <a href="#project-info" class="nav-link">About</a>
+                <a href="#tech-stack" class="nav-link">Tech Stack</a>
+            </nav>
 
-            <div>
-                <h1>RetinaCare</h1>
-                <p>Diabetic Retinopathy Screening</p>
+            <div class="header-actions">
+                <div class="status" id="modelStatus">
+                    <span class="status-dot"></span>
+                    <span id="statusText">AI Model Ready</span>
+                    <span class="status-chip">DenseNet121</span>
+                </div>
             </div>
         </div>
-
-        <div class="status">
-            <span class="status-dot"></span>
-            AI Model Ready
-        </div>
-
     </header>
 
 
-    <!-- ================= MAIN ================= -->
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
 
-    <main class="container">
+        <!-- ================= HERO SECTION ================= -->
+        <section class="hero" id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-icon">✦</span>
+                        <span>AI-POWERED RETINAL ANALYSIS</span>
+                    </div>
 
-        <!-- Hero -->
+                    <h1 class="hero-title">
+                        Diabetic Retinopathy
+                        <span class="gradient-text">Classification</span>
+                    </h1>
 
-        <section class="hero">
+                    <p class="hero-description">
+                        An advanced clinical-grade deep learning system that analyzes retinal fundus images
+                        using <strong>DenseNet121 transfer learning</strong>. Automatically detects pathological
+                        lesions and classifies disease progression across five standardized severity stages.
+                    </p>
 
-            <div class="hero-text">
+                    <div class="hero-actions">
+                        <a href="#workspace" class="cta-primary">
+                            <span>Analyze Retinal Image</span>
+                            <svg viewBox="0 0 20 20" width="18" height="18" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                        <a href="#dr-stages" class="cta-secondary">
+                            View Clinical Scale
+                        </a>
+                    </div>
 
-                <span class="eyebrow">
-                    AI-ASSISTED RETINAL SCREENING
-                </span>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">5</span>
+                            <span class="stat-label">Diagnostic Stages</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-value">224px</span>
+                            <span class="stat-label">Resolution Scale</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-value">121</span>
+                            <span class="stat-label">Layer CNN Model</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-value">&lt; 1s</span>
+                            <span class="stat-label">Inference Speed</span>
+                        </div>
+                    </div>
+                </div>
 
-                <h2>
-                    Diabetic Retinopathy
-                    <span>Classification</span>
-                </h2>
+                <!-- Hero Visual: Retina Scanner Simulation -->
+                <div class="hero-visual">
+                    <div class="scanner-card">
+                        <div class="scanner-header">
+                            <div class="scanner-status">
+                                <span class="scanner-dot"></span>
+                                <span>FUNDUS SCANNER ACTIVE</span>
+                            </div>
+                            <span class="scanner-pill">ODIR-5K OPTIC PIPELINE</span>
+                        </div>
 
-                <p>
-                    Upload a retinal fundus image to analyze
-                    diabetic retinopathy severity using a
-                    DenseNet121 deep learning model.
-                </p>
+                        <div class="scanner-viewport">
+                            <svg class="retina-illustration" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <radialGradient id="fundusGlow" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="#0284c7" stop-opacity="0.35"/>
+                                        <stop offset="60%" stop-color="#0f172a" stop-opacity="0.85"/>
+                                        <stop offset="100%" stop-color="#020617" stop-opacity="1"/>
+                                    </radialGradient>
+                                    <radialGradient id="opticDisc" cx="35%" cy="50%" r="35%">
+                                        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/>
+                                        <stop offset="60%" stop-color="#0284c7" stop-opacity="0.5"/>
+                                        <stop offset="100%" stop-color="#0369a1" stop-opacity="0"/>
+                                    </radialGradient>
+                                    <linearGradient id="scanBeam" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0"/>
+                                        <stop offset="85%" stop-color="#38bdf8" stop-opacity="0.4"/>
+                                        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.95"/>
+                                    </linearGradient>
+                                </defs>
 
+                                <!-- Fundus Background Sphere -->
+                                <circle cx="160" cy="160" r="142" fill="url(#fundusGlow)"/>
+                                <circle cx="160" cy="160" r="142" stroke="#0284c7" stroke-width="1.5" stroke-opacity="0.4"/>
+
+                                <!-- Targeting Grid & Reticles -->
+                                <circle cx="160" cy="160" r="115" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 6" stroke-opacity="0.3" class="rot-radar"/>
+                                <circle cx="160" cy="160" r="80" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.35"/>
+                                <circle cx="160" cy="160" r="45" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="2 4" stroke-opacity="0.5"/>
+
+                                <!-- Crosshairs -->
+                                <line x1="160" y1="18" x2="160" y2="302" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.25"/>
+                                <line x1="18" y1="160" x2="302" y2="160" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.25"/>
+
+                                <!-- Simulated Retinal Vasculature (Vessels) -->
+                                <path d="M 125 160 Q 140 125, 175 110 T 240 85" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.6"/>
+                                <path d="M 125 160 Q 130 190, 160 215 T 235 240" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-opacity="0.6"/>
+                                <path d="M 175 110 Q 195 90, 220 70" stroke="#38bdf8" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.45"/>
+                                <path d="M 160 215 Q 185 240, 205 265" stroke="#38bdf8" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.45"/>
+                                <path d="M 125 160 Q 95 140, 65 135" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.5"/>
+                                <path d="M 125 160 Q 90 175, 60 190" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.5"/>
+
+                                <!-- Optic Disc Spot -->
+                                <circle cx="125" cy="160" r="24" fill="url(#opticDisc)"/>
+                                <circle cx="125" cy="160" r="8" fill="#e0f2fe" opacity="0.85"/>
+
+                                <!-- Macula / Fovea Center -->
+                                <circle cx="195" cy="160" r="14" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.6"/>
+                                <circle cx="195" cy="160" r="3" fill="#38bdf8" opacity="0.9"/>
+
+                                <!-- Animated Laser Sweep Bar -->
+                                <rect class="scanner-sweep" x="20" y="20" width="280" height="20" fill="url(#scanBeam)"/>
+                            </svg>
+
+                            <!-- Scanner Overlays -->
+                            <div class="scanner-overlay overlay-tl">
+                                <span class="overlay-code">MODE // RGB_224</span>
+                                <span class="overlay-val">PREPROCESSED</span>
+                            </div>
+                            <div class="scanner-overlay overlay-tr">
+                                <span class="overlay-code">TARGET</span>
+                                <span class="overlay-val">5 CLASSES</span>
+                            </div>
+                            <div class="scanner-overlay overlay-bl">
+                                <span class="overlay-code">BACKBONE</span>
+                                <span class="overlay-val">DenseNet-121</span>
+                            </div>
+                            <div class="scanner-overlay overlay-br">
+                                <span class="overlay-code">FRAMEWORK</span>
+                                <span class="overlay-val">PyTorch + FastAPI</span>
+                            </div>
+                        </div>
+
+                        <div class="scanner-footer">
+                            <div class="scanner-legend">
+                                <span class="legend-box disc"></span> Optic Disc
+                                <span class="legend-box macula"></span> Macula
+                                <span class="legend-box vessel"></span> Retinal Vasculature
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </section>
 
 
-        <!-- ================= WORKSPACE ================= -->
-
-        <section class="workspace">
-
-            <!-- Upload Card -->
-
-            <div class="card upload-card">
-
-                <div class="card-header">
-
-                    <div>
-                        <span class="section-number">01</span>
-                        <h3>Upload Retinal Image</h3>
-                    </div>
-
-                    <span class="format-badge">
-                        JPG · JPEG · PNG
-                    </span>
-
-                </div>
-
-
-                <!-- Drop Zone -->
-
-                <div
-                    class="drop-zone"
-                    id="dropZone"
-                >
-
-                    <div
-                        class="upload-icon"
-                        id="uploadIcon"
-                    >
-                        ↑
-                    </div>
-
-                    <h4 id="uploadTitle">
-                        Upload retinal fundus image
-                    </h4>
-
-                    <p id="uploadDescription">
-                        Drag & drop your image here or
-                        choose a file from your computer.
-                    </p>
-
-                    <button
-                        type="button"
-                        class="secondary-btn"
-                        id="chooseBtn"
-                    >
-                        Choose Image
-                    </button>
-
-                    <input
-                        type="file"
-                        id="imageInput"
-                        accept=".jpg,.jpeg,.png"
-                        hidden
-                    >
-
-                </div>
-
-
-                <!-- Image Preview -->
-
-                <div
-                    class="preview-container hidden"
-                    id="previewContainer"
-                >
-
-                    <div class="preview-header">
-
-                        <div>
-                            <span class="preview-label">
-                                Selected Image
-                            </span>
-
-                            <h4 id="fileName">
-                                image.jpg
-                            </h4>
-                        </div>
-
-                        <button
-                            type="button"
-                            class="remove-btn"
-                            id="removeBtn"
-                        >
-                            Remove
-                        </button>
-
-                    </div>
-
-                    <img
-                        id="imagePreview"
-                        src=""
-                        alt="Retinal image preview"
-                    >
-
-                </div>
-
-
-                <!-- Analyze Button -->
-
-                <button
-                    type="button"
-                    class="analyze-btn"
-                    id="analyzeBtn"
-                    disabled
-                >
-                    <span id="analyzeText">
-                        Analyze Retina
-                    </span>
-
-                    <span
-                        class="spinner hidden"
-                        id="spinner"
-                    ></span>
-                </button>
-
+        <!-- ================= WORKSPACE (UPLOAD + RESULT) ================= -->
+        <section class="workspace-section" id="workspace">
+            <div class="section-heading">
+                <span class="section-tag">DIAGNOSTIC WORKSPACE</span>
+                <h2 class="section-title">Automated Retinal Image Screening</h2>
+                <p class="section-desc">
+                    Upload a standardized retinal fundus photograph to perform real-time pathological feature extraction
+                    and disease severity classification.
+                </p>
             </div>
 
+            <div class="workspace-grid">
 
-            <!-- Result Card -->
-
-            <div class="card result-card">
-
-                <div class="card-header">
-
-                    <div>
-                        <span class="section-number">02</span>
-                        <h3>Screening Result</h3>
+                <!-- 01: Upload Card -->
+                <div class="card upload-card">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <span class="card-step-badge">STEP 01</span>
+                            <div>
+                                <h3 class="card-title">Upload Retinal Image</h3>
+                                <p class="card-subtitle">Fundus photograph input</p>
+                            </div>
+                        </div>
+                        <span class="format-badge">JPG · JPEG · PNG</span>
                     </div>
 
-                    <span
-                        class="result-status"
-                        id="resultStatus"
-                    >
-                        Awaiting Image
-                    </span>
-
-                </div>
-
-
-                <!-- Empty Result -->
-
-                <div
-                    class="empty-result"
-                    id="emptyResult"
-                >
-
-                    <div class="result-icon">
-                        ◉
-                    </div>
-
-                    <h4>
-                        Your result will appear here
-                    </h4>
-
-                    <p>
-                        Upload a retinal image and click
-                        <strong>Analyze Retina</strong>
-                        to receive the model prediction.
-                    </p>
-
-                </div>
-
-
-                <!-- Actual Result -->
-
-                <div
-                    class="actual-result hidden"
-                    id="actualResult"
-                >
-
-                    <div class="prediction-box">
-
-                        <div>
-                            <span class="result-label">
-                                Predicted Stage
-                            </span>
-
-                            <h2 id="predictedStage">
-                                No DR
-                            </h2>
+                    <!-- Drop Zone -->
+                    <div class="drop-zone" id="dropZone">
+                        <div class="upload-icon" id="uploadIcon">
+                            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
                         </div>
 
-                        <div class="stage-number">
-                            <span id="predictedClass">
-                                0
-                            </span>
-                        </div>
+                        <h4 class="upload-title" id="uploadTitle">
+                            Upload Retinal Fundus Image
+                        </h4>
 
-                    </div>
-
-
-                    <!-- Confidence -->
-
-                    <div class="confidence-section">
-
-                        <div class="metric-row">
-
-                            <span>
-                                Model Confidence
-                            </span>
-
-                            <strong id="confidenceValue">
-                                0%
-                            </strong>
-
-                        </div>
-
-                        <div class="progress-track">
-
-                            <div
-                                class="progress-fill"
-                                id="confidenceBar"
-                            ></div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Probability Distribution -->
-
-                    <div class="probability-section">
-
-                        <div class="metric-title">
-                            Class Probability Distribution
-                        </div>
-
-                        <div
-                            class="probability-list"
-                            id="probabilityList"
-                        ></div>
-
-                    </div>
-
-
-                    <!-- Disclaimer -->
-
-                    <div class="disclaimer">
-
-                        <span>ⓘ</span>
-
-                        <p>
-                            This AI result is intended for
-                            academic and research purposes only
-                            and should not be considered a
-                            medical diagnosis.
+                        <p class="upload-desc" id="uploadDescription">
+                            Drag & drop your retinal photograph here or browse from your device
                         </p>
 
+                        <button type="button" class="choose-btn" id="chooseBtn">
+                            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Browse Image</span>
+                        </button>
+
+                        <input
+                            type="file"
+                            id="imageInput"
+                            accept=".jpg,.jpeg,.png"
+                            hidden
+                        >
+
+                        <span class="upload-hint">Supported formats: JPG, JPEG, PNG (Max 20MB)</span>
                     </div>
 
+                    <!-- Image Preview -->
+                    <div class="preview-container hidden" id="previewContainer">
+                        <div class="preview-header">
+                            <div class="preview-meta">
+                                <span class="preview-tag">SELECTED SPECIMEN</span>
+                                <h4 class="preview-filename" id="fileName">image.jpg</h4>
+                            </div>
+
+                            <div class="preview-header-actions">
+                                <span class="preview-status-tag">
+                                    <span class="preview-pulse"></span>
+                                    Full Image View
+                                </span>
+                                <button type="button" class="remove-btn" id="removeBtn" title="Remove selected image">
+                                    <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Remove</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="preview-frame">
+                            <img
+                                id="imagePreview"
+                                src=""
+                                alt="Retinal image preview"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Analyze Button -->
+                    <button
+                        type="button"
+                        class="analyze-btn"
+                        id="analyzeBtn"
+                        disabled
+                    >
+                        <span id="analyzeText">Analyze Retina</span>
+                        <svg class="analyze-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                        <span class="spinner hidden" id="spinner"></span>
+                    </button>
+
+                    <div class="card-footer-note">
+                        <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Images are preprocessed with ImageNet normalization and resized to 224×224 px.</span>
+                    </div>
                 </div>
 
 
-                <!-- Error -->
-
-                <div
-                    class="error-result hidden"
-                    id="errorResult"
-                >
-
-                    <div class="error-icon">
-                        !
+                <!-- 02: Screening Result Card -->
+                <div class="card result-card">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <span class="card-step-badge">STEP 02</span>
+                            <div>
+                                <h3 class="card-title">AI Analysis Result</h3>
+                                <p class="card-subtitle">DenseNet121 diagnostic output</p>
+                            </div>
+                        </div>
+                        <span class="result-status awaiting" id="resultStatus">Awaiting Image</span>
                     </div>
 
-                    <h4>
-                        Prediction failed
-                    </h4>
+                    <!-- State 1: Empty Result -->
+                    <div class="empty-result" id="emptyResult">
+                        <div class="empty-icon-wrap">
+                            <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4"/>
+                                <path d="M12 8h.01"/>
+                            </svg>
+                        </div>
+                        <h4 class="empty-title">Ready for Retinal Diagnosis</h4>
+                        <p class="empty-desc">
+                            Select or drop a retinal fundus photograph on the left panel and click
+                            <strong>Analyze Retina</strong> to run the automated deep learning classification pipeline.
+                        </p>
+                        <div class="empty-steps">
+                            <div class="empty-step">
+                                <span class="step-num">1</span>
+                                <span>Upload Fundus Photo</span>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="empty-step">
+                                <span class="step-num">2</span>
+                                <span>Run AI Classification</span>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="empty-step">
+                                <span class="step-num">3</span>
+                                <span>Review 5-Stage Report</span>
+                            </div>
+                        </div>
+                    </div>
 
-                    <p id="errorMessage">
-                        Something went wrong.
-                    </p>
+                    <!-- State 2: Actual Clinical Result -->
+                    <div class="actual-result hidden" id="actualResult">
 
+                        <!-- Report Header Bar -->
+                        <div class="report-meta-bar">
+                            <div class="report-badge">
+                                <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>DIAGNOSTIC REPORT GENERATED</span>
+                            </div>
+                            <span class="report-model">DenseNet121 Neural Inference</span>
+                        </div>
+
+                        <!-- Main Prediction Block -->
+                        <div class="prediction-box">
+                            <div class="prediction-info">
+                                <span class="result-label">PREDICTED DR STAGE</span>
+                                <h2 class="predicted-stage-name" id="predictedStage">No DR</h2>
+                                <p class="stage-annotation">Automated Primary Finding</p>
+                            </div>
+
+                            <div class="stage-number">
+                                <span class="stage-prefix">STAGE</span>
+                                <span class="stage-digit" id="predictedClass">0</span>
+                            </div>
+                        </div>
+
+                        <!-- Confidence Gauge Bar -->
+                        <div class="confidence-section">
+                            <div class="metric-row">
+                                <span class="metric-label">
+                                    <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor">
+                                        <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                                    </svg>
+                                    Confidence
+                                </span>
+                                <strong class="metric-val" id="confidenceValue">0.00%</strong>
+                            </div>
+
+                            <div class="progress-track">
+                                <div class="progress-fill" id="confidenceBar"></div>
+                            </div>
+                            <div class="confidence-subtext">Softmax certainty score for predicted stage</div>
+                        </div>
+
+                        <!-- Probability Distribution Breakdown -->
+                        <div class="probability-section">
+                            <div class="probability-header">
+                                <span class="metric-title">Probability Distribution</span>
+                                <span class="metric-classes">5 Classes Evaluated</span>
+                            </div>
+
+                            <div class="probability-list" id="probabilityList">
+                                <!-- Populated dynamically by script.js -->
+                            </div>
+                        </div>
+
+                        <!-- Disclaimer Box -->
+                        <div class="disclaimer">
+                            <div class="disclaimer-icon">
+                                <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <p class="disclaimer-text">
+                                This AI result is intended for academic and research purposes only and should not be considered a medical diagnosis. Always consult certified ophthalmologists and healthcare professionals for clinical evaluations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- State 3: Error Result -->
+                    <div class="error-result hidden" id="errorResult">
+                        <div class="error-icon">
+                            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </div>
+                        <h4 class="error-title">Prediction Failed</h4>
+                        <p class="error-desc" id="errorMessage">Something went wrong.</p>
+                        <p class="error-hint">Please verify that the FastAPI backend server is actively running on port 8000.</p>
+                    </div>
                 </div>
 
             </div>
-
         </section>
 
 
-        <!-- ================= MODEL INFO ================= -->
-
-        <section class="info-grid">
-
-            <div class="info-card">
-
-                <span class="info-icon">AI</span>
-
-                <div>
-                    <h4>DenseNet121</h4>
-                    <p>
-                        Image classification model
-                        using transfer learning.
-                    </p>
-                </div>
-
+        <!-- ================= CLINICAL STAGES SECTION ================= -->
+        <section class="stages-section" id="dr-stages">
+            <div class="section-heading">
+                <span class="section-tag">CLINICAL STAGING CRITERIA</span>
+                <h2 class="section-title">International Clinical Diabetic Retinopathy Scale</h2>
+                <p class="section-desc">
+                    The five standardized diagnostic stages used by ophthalmologists to grade disease progression.
+                </p>
             </div>
 
-
-            <div class="info-card">
-
-                <span class="info-icon">5</span>
-
-                <div>
-                    <h4>Five DR Classes</h4>
-                    <p>
-                        No DR, Mild, Moderate,
-                        Severe and Proliferative.
-                    </p>
+            <div class="stages-grid">
+                <div class="stage-card stage-0">
+                    <div class="stage-card-header">
+                        <span class="stage-pill">STAGE 0</span>
+                        <span class="stage-status-indicator">Healthy</span>
+                    </div>
+                    <h3 class="stage-name">No DR</h3>
+                    <p class="stage-criteria">No visible retinal abnormalities, hemorrhages, or microaneurysms. Normal baseline fundus photography.</p>
                 </div>
 
-            </div>
-
-
-            <div class="info-card">
-
-                <span class="info-icon">224</span>
-
-                <div>
-                    <h4>Image Processing</h4>
-                    <p>
-                        Input images are resized to
-                        224 × 224 pixels.
-                    </p>
+                <div class="stage-card stage-1">
+                    <div class="stage-card-header">
+                        <span class="stage-pill">STAGE 1</span>
+                        <span class="stage-status-indicator">Mild</span>
+                    </div>
+                    <h3 class="stage-name">Mild DR</h3>
+                    <p class="stage-criteria">Presence of microaneurysms only. Earliest clinically observable stage of vascular deterioration.</p>
                 </div>
 
+                <div class="stage-card stage-2">
+                    <div class="stage-card-header">
+                        <span class="stage-pill">STAGE 2</span>
+                        <span class="stage-status-indicator">Moderate</span>
+                    </div>
+                    <h3 class="stage-name">Moderate DR</h3>
+                    <p class="stage-criteria">Microaneurysms, dot/blot hemorrhages, hard exudates, or cotton wool spots exceeding mild criteria.</p>
+                </div>
+
+                <div class="stage-card stage-3">
+                    <div class="stage-card-header">
+                        <span class="stage-pill">STAGE 3</span>
+                        <span class="stage-status-indicator">Severe</span>
+                    </div>
+                    <h3 class="stage-name">Severe DR</h3>
+                    <p class="stage-criteria">&gt; 20 intraretinal hemorrhages in each of 4 quadrants, definite venous beading, or prominent IRMA.</p>
+                </div>
+
+                <div class="stage-card stage-4">
+                    <div class="stage-card-header">
+                        <span class="stage-pill">STAGE 4</span>
+                        <span class="stage-status-indicator">Critical</span>
+                    </div>
+                    <h3 class="stage-name">Proliferative DR</h3>
+                    <p class="stage-criteria">Neovascularization of the retina or disc, vitreous hemorrhage, or fibrovascular proliferation. High vision risk.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= MEDICAL INFORMATION CARDS ================= -->
+        <section class="info-section" id="project-info">
+            <div class="section-heading">
+                <span class="section-tag">MEDICAL INFORMATION</span>
+                <h2 class="section-title">Clinical AI Architecture & Principles</h2>
+                <p class="section-desc">Key scientific pillars powering automated retinal disease assessment.</p>
             </div>
 
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M2.05 12a10 10 0 0 1 19.9 0 10 10 0 0 1-19.9 0z"/>
+                        </svg>
+                    </div>
+                    <div class="info-body">
+                        <h4 class="info-title">Image Analysis</h4>
+                        <p class="info-desc">
+                            AI analyzes retinal fundus images. Extracts subtle micro-vascular features, hemorrhages, and exudates from 224 × 224 normalized photographs.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
+                        </svg>
+                    </div>
+                    <div class="info-body">
+                        <h4 class="info-title">Five DR Stages</h4>
+                        <p class="info-desc">
+                            Graded severity scale: No DR → Mild → Moderate → Severe → Proliferative. Full spectrum staging conforming to international ophthalmology guidelines.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                            <line x1="6" y1="6" x2="6.01" y2="6"/>
+                            <line x1="6" y1="18" x2="6.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <div class="info-body">
+                        <h4 class="info-title">Deep Learning</h4>
+                        <p class="info-desc">
+                            Powered by DenseNet121 transfer learning. Dense connectivity reuses feature maps across layers to capture fine pathological lesions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                    </div>
+                    <div class="info-body">
+                        <h4 class="info-title">Academic Project</h4>
+                        <p class="info-desc">
+                            Developed for educational and research purposes as an Engineering Major Project (2026). Designed for AI-assisted clinical ophthalmology support.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= TECH STACK SECTION ================= -->
+        <section class="tech-section" id="tech-stack">
+            <div class="section-heading">
+                <span class="section-tag">ENGINEERING STACK</span>
+                <h2 class="section-title">Technology & Frameworks</h2>
+                <p class="section-desc">Robust deep learning and asynchronous API architecture.</p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-badge">CNN BACKBONE</div>
+                    <h3 class="tech-name">DenseNet121</h3>
+                    <p class="tech-desc">Densely Connected Convolutional Network maximizing gradient flow and feature propagation.</p>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-badge">FRAMEWORK</div>
+                    <h3 class="tech-name">PyTorch</h3>
+                    <p class="tech-desc">Industry-standard deep learning engine for tensor computation and GPU/CPU model inference.</p>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-badge">BACKEND API</div>
+                    <h3 class="tech-name">FastAPI</h3>
+                    <p class="tech-desc">Modern high-performance asynchronous REST API serving predictions via /predict endpoint.</p>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-badge">CORE LANGUAGE</div>
+                    <h3 class="tech-name">Python</h3>
+                    <p class="tech-desc">End-to-end data pipeline, PyTorch model definition, training loop, and evaluation scripts.</p>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-badge">IMAGE PIPELINE</div>
+                    <h3 class="tech-name">Computer Vision</h3>
+                    <p class="tech-desc">Torchvision transforms, PIL image processing, and ImageNet standardization at 224×224 px.</p>
+                </div>
+            </div>
         </section>
 
     </main>
 
 
     <!-- ================= FOOTER ================= -->
-
     <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M2.05 12a10 10 0 0 1 19.9 0 10 10 0 0 1-19.9 0z"></path>
+                    </svg>
+                    <span>RetinaCare</span>
+                </div>
+                <p class="footer-tagline">
+                    AI-Assisted Retinal Fundus Image Classification System
+                </p>
+                <p class="footer-academic">
+                    Academic Major Project — 2026
+                </p>
+            </div>
 
-        <p>
-            Academic Project · AI-Assisted Retinal Image
-            Classification
-        </p>
+            <div class="footer-nav">
+                <span class="footer-nav-title">Quick Links</span>
+                <a href="#hero">Home</a>
+                <a href="#workspace">Diagnostic Workspace</a>
+                <a href="#dr-stages">Clinical DR Stages</a>
+                <a href="#project-info">Model Architecture</a>
+                <a href="#tech-stack">Tech Stack</a>
+            </div>
 
-        <p>
-            DenseNet121 · FastAPI
-        </p>
+            <div class="footer-tech">
+                <span class="footer-nav-title">Technology Stack</span>
+                <div class="footer-tags">
+                    <span class="footer-pill">DenseNet121</span>
+                    <span class="footer-pill">PyTorch</span>
+                    <span class="footer-pill">FastAPI</span>
+                    <span class="footer-pill">Python</span>
+                    <span class="footer-pill">Torchvision</span>
+                </div>
+            </div>
+        </div>
 
+        <div class="footer-bottom">
+            <p>© 2026 RetinaCare. Developed for academic and clinical research purposes only.</p>
+            <p>DenseNet121 · FastAPI · ODIR-5K Dataset</p>
+        </div>
     </footer>
 
 
+    <!-- Frontend Script -->
     <script src="script.js"></script>
 
 </body>

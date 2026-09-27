@@ -1,5 +1,5 @@
 // ============================================================
-// RETINACARE - FRONTEND LOGIC
+// RETINACARE - FRONTEND LOGIC & INTERACTION HANDLERS
 // ============================================================
 
 const API_URL = "http://127.0.0.1:8000";
@@ -73,10 +73,15 @@ let selectedFile = null;
 
 
 // ============================================================
-// CHOOSE IMAGE BUTTON
+// CHOOSE IMAGE BUTTON & DROPZONE CLICK
 // ============================================================
 
-chooseBtn.addEventListener("click", () => {
+chooseBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    imageInput.click();
+});
+
+dropZone.addEventListener("click", () => {
     imageInput.click();
 });
 
@@ -145,7 +150,7 @@ function handleFile(file) {
     if (!allowedTypes.includes(file.type)) {
 
         showError(
-            "Please select a JPG, JPEG or PNG image."
+            "Please select a valid JPG, JPEG or PNG retinal image."
         );
 
         return;
@@ -220,7 +225,7 @@ analyzeBtn.addEventListener("click", async () => {
 
 
 // ============================================================
-// ANALYZE IMAGE
+// ANALYZE IMAGE (API CALL)
 // ============================================================
 
 async function analyzeImage() {
@@ -302,10 +307,21 @@ function displayResult(data) {
     actualResult.classList.remove("hidden");
 
 
-    // Status
+    // Status badge update
 
     resultStatus.textContent =
         "Analysis Complete";
+
+    resultStatus.className =
+        "result-status complete";
+
+
+    // Dynamic stage styling attribute
+
+    actualResult.setAttribute(
+        "data-stage",
+        data.predicted_class
+    );
 
 
     // Prediction
@@ -347,8 +363,12 @@ function displayResult(data) {
             const row =
                 document.createElement("div");
 
-            row.className =
-                "probability-row";
+            const isPredicted =
+                stage === data.predicted_stage;
+
+            row.className = isPredicted
+                ? "probability-row highlight"
+                : "probability-row";
 
 
             row.innerHTML = `
@@ -391,6 +411,9 @@ function showError(message) {
     resultStatus.textContent =
         "Error";
 
+    resultStatus.className =
+        "result-status error";
+
     errorMessage.textContent =
         message;
 
@@ -409,8 +432,13 @@ function resetResult() {
 
     errorResult.classList.add("hidden");
 
+    actualResult.removeAttribute("data-stage");
+
     resultStatus.textContent =
         "Awaiting Image";
+
+    resultStatus.className =
+        "result-status awaiting";
 
     confidenceBar.style.width =
         "0%";
@@ -465,3 +493,41 @@ function setLoading(isLoading) {
     }
 
 }
+
+
+// ============================================================
+// BACKEND STATUS VERIFICATION (OPTIONAL HEALTH CHECK)
+// ============================================================
+
+async function checkBackendStatus() {
+
+    const statusDot = document.querySelector(".status-dot");
+    const statusText = document.getElementById("statusText");
+
+    try {
+
+        const response = await fetch(`${API_URL}/health`);
+
+        if (response.ok) {
+
+            if (statusDot) statusDot.classList.remove("offline");
+            if (statusText) statusText.textContent = "AI Model Ready";
+
+        } else {
+
+            if (statusDot) statusDot.classList.add("offline");
+            if (statusText) statusText.textContent = "API Degraded";
+
+        }
+
+    } catch (e) {
+
+        if (statusDot) statusDot.classList.add("offline");
+        if (statusText) statusText.textContent = "Backend Offline";
+
+    }
+
+}
+
+// Initial status check
+checkBackendStatus();
