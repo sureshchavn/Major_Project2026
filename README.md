@@ -407,13 +407,14 @@ python -m uvicorn api.main:app --reload
 In another terminal:
 
 ``` powershell
-python -m http.server 5500 --directory frontend
+python -m http.server 5500 --directory "C:\Users\sures\OneDrive\Desktop\Major-project\frontend"
 ```
 
 Then open:
 
 ``` text
-http://127.0.0.1:5500
+http://127.0.0.1:5500/index.html
+
 ```
 
 ## 19. Technology Stack
